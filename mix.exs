@@ -22,7 +22,9 @@ defmodule Dotel.MixProject do
   defp deps do
     [
       {:grpc, "~> 0.7"},
-      {:protobuf, "~> 0.11"}
+      {:jason, "~> 1.4"},
+      {:protobuf, "~> 0.11"},
+      {:protobuf_generate, "~> 0.1.2"}
     ]
   end
 end
