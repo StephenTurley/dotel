@@ -27,3 +27,22 @@ defmodule Opentelemetry.Proto.Collector.Profiles.V1experimental.ExportProfilesPa
   field :rejected_profiles, 1, type: :int64, json_name: "rejectedProfiles"
   field :error_message, 2, type: :string, json_name: "errorMessage"
 end
+
+defmodule Opentelemetry.Proto.Collector.Profiles.V1experimental.ProfilesService.Service do
+  @moduledoc false
+
+  use GRPC.Service,
+    name: "opentelemetry.proto.collector.profiles.v1experimental.ProfilesService",
+    protoc_gen_elixir_version: "0.12.0"
+
+  rpc :Export,
+      Opentelemetry.Proto.Collector.Profiles.V1experimental.ExportProfilesServiceRequest,
+      Opentelemetry.Proto.Collector.Profiles.V1experimental.ExportProfilesServiceResponse
+end
+
+defmodule Opentelemetry.Proto.Collector.Profiles.V1experimental.ProfilesService.Stub do
+  @moduledoc false
+
+  use GRPC.Stub,
+    service: Opentelemetry.Proto.Collector.Profiles.V1experimental.ProfilesService.Service
+end

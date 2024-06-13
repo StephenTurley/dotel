@@ -27,3 +27,21 @@ defmodule Opentelemetry.Proto.Collector.Logs.V1.ExportLogsPartialSuccess do
   field :rejected_log_records, 1, type: :int64, json_name: "rejectedLogRecords"
   field :error_message, 2, type: :string, json_name: "errorMessage"
 end
+
+defmodule Opentelemetry.Proto.Collector.Logs.V1.LogsService.Service do
+  @moduledoc false
+
+  use GRPC.Service,
+    name: "opentelemetry.proto.collector.logs.v1.LogsService",
+    protoc_gen_elixir_version: "0.12.0"
+
+  rpc :Export,
+      Opentelemetry.Proto.Collector.Logs.V1.ExportLogsServiceRequest,
+      Opentelemetry.Proto.Collector.Logs.V1.ExportLogsServiceResponse
+end
+
+defmodule Opentelemetry.Proto.Collector.Logs.V1.LogsService.Stub do
+  @moduledoc false
+
+  use GRPC.Stub, service: Opentelemetry.Proto.Collector.Logs.V1.LogsService.Service
+end

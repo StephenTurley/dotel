@@ -27,3 +27,21 @@ defmodule Opentelemetry.Proto.Collector.Metrics.V1.ExportMetricsPartialSuccess d
   field :rejected_data_points, 1, type: :int64, json_name: "rejectedDataPoints"
   field :error_message, 2, type: :string, json_name: "errorMessage"
 end
+
+defmodule Opentelemetry.Proto.Collector.Metrics.V1.MetricsService.Service do
+  @moduledoc false
+
+  use GRPC.Service,
+    name: "opentelemetry.proto.collector.metrics.v1.MetricsService",
+    protoc_gen_elixir_version: "0.12.0"
+
+  rpc :Export,
+      Opentelemetry.Proto.Collector.Metrics.V1.ExportMetricsServiceRequest,
+      Opentelemetry.Proto.Collector.Metrics.V1.ExportMetricsServiceResponse
+end
+
+defmodule Opentelemetry.Proto.Collector.Metrics.V1.MetricsService.Stub do
+  @moduledoc false
+
+  use GRPC.Stub, service: Opentelemetry.Proto.Collector.Metrics.V1.MetricsService.Service
+end

@@ -27,3 +27,21 @@ defmodule Opentelemetry.Proto.Collector.Trace.V1.ExportTracePartialSuccess do
   field :rejected_spans, 1, type: :int64, json_name: "rejectedSpans"
   field :error_message, 2, type: :string, json_name: "errorMessage"
 end
+
+defmodule Opentelemetry.Proto.Collector.Trace.V1.TraceService.Service do
+  @moduledoc false
+
+  use GRPC.Service,
+    name: "opentelemetry.proto.collector.trace.v1.TraceService",
+    protoc_gen_elixir_version: "0.12.0"
+
+  rpc :Export,
+      Opentelemetry.Proto.Collector.Trace.V1.ExportTraceServiceRequest,
+      Opentelemetry.Proto.Collector.Trace.V1.ExportTraceServiceResponse
+end
+
+defmodule Opentelemetry.Proto.Collector.Trace.V1.TraceService.Stub do
+  @moduledoc false
+
+  use GRPC.Stub, service: Opentelemetry.Proto.Collector.Trace.V1.TraceService.Service
+end
