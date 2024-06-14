@@ -15,7 +15,7 @@ defmodule Dotel.Application do
       # Start the Finch HTTP client for sending emails
       {Finch, name: Dotel.Finch},
       {GRPC.Server.Supervisor,
-       endpoint: DotelGrpc.Metrics.Endpoint, port: 50051, start_server: true},
+       endpoint: DotelGrpc.Export.Endpoint, port: 50051, start_server: true},
       # Start a worker by calling: Dotel.Worker.start_link(arg)
       # {Dotel.Worker, arg},
       # Start to serve requests, typically the last entry

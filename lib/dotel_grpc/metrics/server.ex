@@ -8,11 +8,8 @@ defmodule DotelGrpc.Metrics.Server do
 
   alias Opentelemetry.Proto.Collector.Metrics.V1, as: MetricsCollector
 
-  def export(request, stream) do
+  def export(%MetricsCollector.ExportMetricsServiceRequest{} = request, _stream) do
     Logger.info("metrics export called")
-
-    IO.inspect(request)
-    IO.inspect(stream)
     %MetricsCollector.ExportMetricsServiceResponse{}
   end
 end
