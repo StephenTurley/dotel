@@ -1,4 +1,4 @@
-defmodule DotelGrpc.MetricsServer do
+defmodule DotelGrpc.Metrics.Server do
   require Logger
 
   use GRPC.Server,
